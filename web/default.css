@@ -1,0 +1,117 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #D9E1E4;
+    font-size: 16px;
+    height: 100%;
+}
+.nav{
+     background: #363751;
+     overflow: hidden;
+}
+.nav .menu_main{
+    list-style: none;
+
+}
+.nav .menu_main>li{
+    padding:  10px;
+    width: 12%;
+    float: left;
+}
+.nav .menu_main>li>a{
+   color: #fff;
+   text-decoration: none; 
+}
+.nav .menu_main>li:hover{
+    background: #2FB4DC;
+    cursor: pointer;
+}
+.nav .menu_main>li .sub_menu>li>a:hover{
+    color:#2FB4DC;
+    cursor: pointer;
+    
+    
+}
+.nav .menu_main>li>.sub_menu{
+   position: absolute;
+   background: #fff; 
+   width: 25%;
+   list-style: none;
+   margin-top: 10px;
+   display: none;
+   
+}
+.nav .menu_main>li:hover> .sub_menu{
+    display: block;
+}
+.nav .menu_main>li>.sub_menu>li{
+  padding: 10px;
+   border: 1px solid #ccc; 
+}
+.nav .menu_main>li>.sub_menu>li>a{
+  text-decoration: none;
+  color: #000;
+}
+
+
+#header0{
+    background: #fff;
+    padding: 5px;
+}
+
+#imghea{
+    float: right;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+}
+#footer {
+    background-color: #ccc;
+    padding: 20px;
+}
+.error{
+    color: #ac2323;
+}
+.inpsub{
+    color: #fff;
+    background: #A41734;
+    border: 2px solid #A41734;
+    border-radius: 6px;
+    width:100%;
+
+}
+.inpsub:hover {
+    background-color:#E46115 ;
+    color: white;
+    border: 2px solid  #E46115;}
+.inptex{
+    width:250px;
+    border: none;
+    border-bottom: 2px solid #E46115;
+    
+
+}
+.input{
+    
+    padding-top: 12px;
+    margin: 8px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+.tabla{
+    
+    width: 300px;    
+    margin:auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+.tabusu{
+    width: 300px;
+}

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import java.io.IOException;
@@ -11,8 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Persona1;
-import modelo.Persona1DAC;
+import modelo.Cliente;
+import modelo.ClienteDAO;
+import modelo.encmd5;
 
 /**
  *
@@ -20,29 +17,31 @@ import modelo.Persona1DAC;
  */
 public class Controlador extends HttpServlet {
 
-    Persona1DAC dao = new Persona1DAC();
-    Persona1 p = new Persona1();
+    ClienteDAO dao = new ClienteDAO();
+    Cliente p = new Cliente();
     int r;
-
+    encmd5 enc = new encmd5();
+    String cont;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String accion = request.getParameter("accion");
         if (accion.equals("Ingresar")) {
-            String nom = request.getParameter("nom");
-            String cor = request.getParameter("cor");
-            p.setNombres(nom);
-            p.setCorreo(cor);
+            String usu = request.getParameter("usucli");
+            String con = request.getParameter("concli");
+            cont=enc.getHash(con, "MD5");
+            p.setUsucli(usu);
+            p.setConcli(cont);
             r = dao.Validar(p);
             if (r == 1) {
-                request.getSession().setAttribute("Nombres", nom);
-                request.getSession().setAttribute("Correo", cor);
+                request.getSession().setAttribute("usucli", usu);
+                request.getSession().setAttribute("concli", cont);
                 request.getRequestDispatcher("Principal.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }else{
-             request.getRequestDispatcher("index.jsp").forward(request, response);
+             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

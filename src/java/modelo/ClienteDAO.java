@@ -11,7 +11,7 @@ import java.sql.*;
  *
  * @author DARVIN
  */
-public class Persona1DAC implements Validar {
+public class ClienteDAO implements Validar {
 
     Connection con;
     Conexion cn = new Conexion();
@@ -20,19 +20,19 @@ public class Persona1DAC implements Validar {
     
 
     @Override
-    public int Validar(Persona1 per) {
+    public int Validar(Cliente per) {
         int r=0;
-        String sql = "select * from persona where Nombres=? and Correo=?";
+        String sql = "select * from cliente where usucli=? and concli=?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1, per.getNombres());
-            ps.setString(2, per.getCorreo());
+            ps.setString(1, per.getUsucli());
+            ps.setString(2, per.getConcli());
             rs = ps.executeQuery();
             while (rs.next()) {
                 r = r + 1;
-                per.setNombres(rs.getString("Nombres"));
-                per.setNombres(rs.getString("Correo"));
+                per.setUsucli(rs.getString("usucli"));
+                per.setConcli(rs.getString("concli"));
             }
             if (r == 1) {
                 return 1;
