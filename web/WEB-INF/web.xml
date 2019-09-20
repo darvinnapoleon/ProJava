@@ -4,9 +4,17 @@
         <servlet-name>Procesar</servlet-name>
         <servlet-class>controlador.Procesar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador</servlet-name>
+        <servlet-class>controlador.Controlador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Procesar</servlet-name>
         <url-pattern>/procesar.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador</servlet-name>
+        <url-pattern>/controlador.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

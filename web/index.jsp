@@ -12,12 +12,23 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Formulario 1</h1>
-        <form action="procesar.do" method="POST">
+
+        <!--<form action="procesar.do" method="POST">
             Nombre: <input type="text" name="nom"><br>
             Edad: <input type="text" name="eda"><br>
             <input type="submit" value="enviar datos">
-
-        </form>
+        </form>-->
+        <div>
+            <form action="controlador.do" method="POST">
+                <p>Bienvenidos al sistema</p>
+                <div>
+                    <label>Nombres:</label>
+                    <input type="text" name="nom" placeholder="Ingrese nombres">
+                    <label>Email:</label>
+                    <input type="email" name="cor" placeholder="example.@gmail.com">
+                </div>
+                <input type="submit" name="accion" value="Ingresar">   
+            </form>
+        </div>
     </body>
 </html>
