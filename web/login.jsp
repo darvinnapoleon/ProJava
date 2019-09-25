@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="StyleSheet" href="default.css">
+        <link rel="StyleSheet" href="css/default.css">
     </head>
     <body>
         <!--<p>  <?php require 'views/header.php'; ?></p>-->
