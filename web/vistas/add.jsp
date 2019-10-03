@@ -1,9 +1,9 @@
 <%-- 
-    Document   : index
-    Created on : 18/09/2019, 09:57:06 AM
-    Author     : DARVIN
+    Document   : add
+    Created on : 03/10/2019, 03:18:35 PM
+    Author     : WS-24
 --%>
-<%@ page import="modelo.encmd5" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div>
-            <a href="controlador1.do?accion=list">Listar Persona</a>
-        </div>
+        <h1>Hello World!</h1>
     </body>
 </html>

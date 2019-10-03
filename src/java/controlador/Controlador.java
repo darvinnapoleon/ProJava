@@ -22,6 +22,7 @@ public class Controlador extends HttpServlet {
     int r;
     encmd5 enc = new encmd5();
     String cont;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
