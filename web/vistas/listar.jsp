@@ -7,7 +7,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="modelo.Persona"%>
 <%@page import="java.util.List"%>
-<%@page import="modeloDAO.personaDAO"%>
+<%@page import="modeloDAO.PersonaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +17,7 @@
     </head>
     <body>
         <h1>Personas</h1>
+        <a href="controlador1.do?accion=add">Agregar</a>
         <table border="1">
             <thead>
                 <tr>
@@ -27,7 +28,7 @@
                 </tr>
             </thead>
             <%
-                personaDAO dao = new personaDAO();
+                PersonaDAO dao = new PersonaDAO();
                 List<Persona>list=dao.listar();
                 Iterator<Persona>iter=list.iterator();
                 Persona per=null;
@@ -37,16 +38,16 @@
             %>
             <tbody>
                 <tr>
-                    <td><% per.getId(); %></td>
-                    <td><% per.getDni(); %></td>
-                    <td><% per.getNom(); %></td>
+                    <td><%= per.getId()%></td>
+                    <td><%= per.getDni() %></td>
+                    <td><%= per.getNom() %></td>
                     <td>
-                        <a>editar</a>
-                        <a>remover</a>
+                        <a href="controlador1.do?accion=editar&id=<%= per.getId()%>">editar</a>
+                        <a href="controlador1.do?accion=eliminar&id=<%= per.getId()%>">remover</a>
                     </td>
                     
                 </tr>
-                <% }%>
+                <% } %>
             </tbody>
         </table>
     </body>

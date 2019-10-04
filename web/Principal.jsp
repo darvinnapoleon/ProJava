@@ -14,11 +14,11 @@
 
     </head>
     <body>
-        <nav id="header0">
+      <!--  <nav id="header0">
             <a href="" ><img src=""></a>
             <a href="" id="imghea"><img src="img/car.png" ><p>Carro</p></a>
             <a href="" id="imghea"><img src="img/usu.png" class="sub_menu1"><p>Registrate</p></a>
-        </nav>
+        </nav>-->
         <nav class="nav">
             <ul class="menu_main" >
                 <li><a href="" ><img src="img/men.png">Categoria</a>

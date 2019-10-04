@@ -13,7 +13,7 @@
     </head>
     <body>
         <div>
-            <a href="controlador1.do?accion=list">Listar Persona</a>
+            <a href="controlador1.do?accion=listar">Listar Persona</a>
         </div>
     </body>
 </html>
