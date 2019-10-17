@@ -1,0 +1,56 @@
+.group-color .container{
+	background: #DE423A;
+	color: white;
+	padding: 10px;
+	text-align: center;
+}
+.main_title{
+	margin: 15px 0;
+	font-size: 1.8em;
+	font-family: 'Pacifico' ,cursive;
+	font-weight: 100;
+
+}
+.main_txt{
+
+}.colum-title{
+	font-size:1.3em;
+}
+.main-about-description .column:nth-child(2){
+	padding: 10px;
+}
+.btn{
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 120px;
+	background: #DE423A;
+	color: white;
+	padding: 10px;
+	margin: 10px auto;
+}
+.group_title{
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+	font-weight: 100;
+	font-size: 1.8em;
+	margin: 30px;
+}
+.today-special .column{
+	margin-bottom: 30px;
+	text-align: center;
+}
+.today-special_img{
+	margin: auto;
+	max-width: 350px;
+}
+.today-special_title{
+	font-size:1.3em;
+	padding-top: 10px;
+	padding-bottom:20px;
+}
+.today-special_price{
+	font-size:1.5em;
+	color: #DE423A;
+	font-weight: bold;
+}

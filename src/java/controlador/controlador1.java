@@ -11,7 +11,7 @@ import modelo.Persona;
 import modeloDAO.PersonaDAO;
 
 public class controlador1 extends HttpServlet {
-
+    String login = "vistas/login.jsp";
     String listar = "vistas/listar.jsp";
     String add = "vistas/add.jsp";
     String edit = "vistas/edit.jsp";
@@ -30,7 +30,9 @@ public class controlador1 extends HttpServlet {
 
         String acceso = "";
         String action = request.getParameter("accion");
-        if (action.equalsIgnoreCase("listar")) {
+        if(action.equalsIgnoreCase("login")){
+            acceso=login;
+        }else if (action.equalsIgnoreCase("listar")) {
             acceso = listar;
         } else if (action.equalsIgnoreCase("add")) {
             acceso = add;

@@ -1,0 +1,10 @@
+.main-header{
+	width: 100%;
+}
+.logo{
+	font-size: 1.8em;
+	color: #DE423A;
+	padding: 10px;
+	font-family: 'Pacifico', cursive;
+	font-weight: 100;
+}

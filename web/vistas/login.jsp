@@ -1,12 +1,5 @@
-<%-- 
-    Document   : edit
-    Created on : 03/10/2019, 03:18:55 PM
-    Author     : WS-24
---%>
-
-<%@page import="modelo.Persona"%>
-<%@page import="modeloDAO.PersonaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,22 +36,33 @@
                 </div>
             </div>
         </nav>
-        <div>
-            <% 
-            PersonaDAO dao = new PersonaDAO();
-            int id = Integer.parseInt((String)request.getAttribute("idper"));
-            Persona p = (Persona)dao.list(id);
-            %>
-            <h1>Editar Persona</h1>
-        <form action="controlador1.do">
-            ID:<br>
-            DNI:<input type="text" name="txtDni" value="<%= p.getDni()%>"><br>
-            Nombres:<input type="text" name="txtNom" value="<%= p.getNom()%>"><br>
-            <input type="hidden" name="txtid" value="<%= p.getId()%>">
-            <input type="submit" name="accion" value="Actualizar"><br>
-        </form>
-        </div>
-         <footer class="main-footer">
+        <section class="banner">
+		<img src="img/banner1.jpg" alt="" class="banner_img">
+		<div class="banner_content"><form method="POST" action="controlador.do" name="datusu">
+            <table border="1"  class="tabla tabusu">            
+                <tr>
+                    <td colspan="2"><center><h1>Iniciar sesión</h1></center></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><center><img src="img/use.png" width="100" height="100"></center></td>
+                </tr>
+                
+                <tr >
+                    <td>Usuario</td>
+                    <td><input type="text" name="usucli" placeholder="Ingrese usuario" required="" class="input inptex"></td>
+                </tr>
+                <tr>
+                    <td>Contraseña</td>
+                    <td><input type="password" name="concli" placeholder="Contraseña" required="" class="input inptex"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><center><input class ="input inpsub" type="submit" name="accion" value="Ingresar" ></center></td>  
+                </tr>
+            </table>
+        </form></div>
+	</section>
+	
+               <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">
                     <h2 class="column_title">¿Porque visitarnos?</h2>
@@ -81,6 +85,7 @@
         </footer>
 
         <script src="js/menu.js"></script>
+        
         
     </body>
 </html>

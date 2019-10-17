@@ -37,7 +37,7 @@ public class Controlador extends HttpServlet {
             if (r == 1) {
                 request.getSession().setAttribute("usucli", usu);
                 request.getSession().setAttribute("concli", cont);
-                request.getRequestDispatcher("Principal.jsp").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
