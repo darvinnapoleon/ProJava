@@ -12,6 +12,10 @@
         <servlet-name>controlImg</servlet-name>
         <servlet-class>controlador.controlImg</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controlPro</servlet-name>
+        <servlet-class>controlador.controlPro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlCli</servlet-name>
         <url-pattern>/controlcli.do</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>controlImg</servlet-name>
         <url-pattern>/controlimg.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlPro</servlet-name>
+        <url-pattern>/controlpro.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

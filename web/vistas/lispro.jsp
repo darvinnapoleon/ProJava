@@ -5,9 +5,9 @@
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="modelo.Categoria"%>
+<%@page import="modelo.Producto"%>
 <%@page import="java.util.List"%>
-<%@page import="modeloDAO.CategoriaDAO"%>
+<%@page import="modeloDAO.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-        <title>login</title>
+        <title>producto</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
     </head>
@@ -47,17 +47,17 @@
             <section class="group today-special">
                 <h2 class="group_title">Lo que tu prefieras</h2>
                 <div class="container container_flex">
-                    <%  CategoriaDAO dao = new CategoriaDAO();
-                        List<Categoria> list = dao.listarcat();
-                        Iterator<Categoria> iter = list.iterator();
-                        Categoria cat = null;
+                    <%  ProductoDAO dao = new ProductoDAO();
+                        List<Producto> list = dao.listarpro();
+                        Iterator<Producto> iter = list.iterator();
+                        Producto cat = null;
                         while (iter.hasNext()) {
                             cat = iter.next();
 
                     %>
                         <div class="column column_50-25">
-                            <a href="controlpro.do?idpro=<%= cat.getIdcat() %>"><img src="controlimg.do?idcat=<%= cat.getIdcat() %>" alt="" class="today-special_img" ></a>
-                        <div class="today-special_title"><%= cat.getNomcat()%></div>
+                           <!-- <a href="controlpro.do?idpro=<%= cat.getIdcat() %>"> --><img src="controlimg.do?idcat=<%= cat.getIdcat() %>" alt="" class="today-special_img" > <!--</a>-->
+                        <div class="today-special_title"><%= cat.getNompro()%></div>
                     </div>    
                         <% } %>
                     
@@ -90,3 +90,4 @@
 
     </body>
 </html>
+
