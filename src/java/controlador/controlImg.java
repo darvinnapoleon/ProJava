@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controlador;
 
 import java.io.IOException;
@@ -7,43 +11,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Cliente;
-import modelo.ClienteDAO;
-import modelo.encmd5;
+import modeloDAO.CategoriaDAO;
 
 /**
  *
  * @author DARVIN
  */
-public class Controlador extends HttpServlet {
+public class controlImg extends HttpServlet {
 
-    ClienteDAO dao = new ClienteDAO();
-    Cliente p = new Cliente();
-    int r;
-    encmd5 enc = new encmd5();
-    String cont;
-    
+    CategoriaDAO dao = new CategoriaDAO();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String accion = request.getParameter("accion");
-        if (accion.equals("Ingresar")) {
-            String usu = request.getParameter("usucli");
-            String con = request.getParameter("concli");
-            cont=enc.getHash(con, "MD5");
-            p.setUsucli(usu);
-            p.setConcli(cont);
-            r = dao.Validar(p);
-            if (r == 1) {
-                request.getSession().setAttribute("usucli", usu);
-                request.getSession().setAttribute("concli", cont);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-        }else{
-             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +38,9 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id=Integer.parseInt(request.getParameter("idcat"));
+        dao.listarImg(id, response);
+        
     }
 
     /**

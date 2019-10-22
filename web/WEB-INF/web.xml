@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Controlador</servlet-name>
-        <servlet-class>controlador.Controlador</servlet-class>
+        <servlet-name>controlCli</servlet-name>
+        <servlet-class>controlador.controlCli</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controlador1</servlet-name>
-        <servlet-class>controlador.controlador1</servlet-class>
+        <servlet-name>controlCat</servlet-name>
+        <servlet-class>controlador.controlCat</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>controlImg</servlet-name>
+        <servlet-class>controlador.controlImg</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Controlador</servlet-name>
-        <url-pattern>/controlador.do</url-pattern>
+        <servlet-name>controlCli</servlet-name>
+        <url-pattern>/controlcli.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controlador1</servlet-name>
-        <url-pattern>/controlador1.do</url-pattern>
+        <servlet-name>controlCat</servlet-name>
+        <url-pattern>/controlcat.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlImg</servlet-name>
+        <url-pattern>/controlimg.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

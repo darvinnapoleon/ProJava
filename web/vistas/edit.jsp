@@ -4,8 +4,8 @@
     Author     : WS-24
 --%>
 
-<%@page import="modelo.Persona"%>
-<%@page import="modeloDAO.PersonaDAO"%>
+<%@page import="modelo.Cliente"%>
+<%@page import="modeloDAO.ClienteDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,8 +32,8 @@
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
                     <li class="menu_item"><a href="main" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlador1.do?accion=listar" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="sesion" class="menu_link" id="som">Somos</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
+                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
                     <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
                     <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
                 </ul>
@@ -45,16 +45,16 @@
         </nav>
         <div>
             <% 
-            PersonaDAO dao = new PersonaDAO();
-            int id = Integer.parseInt((String)request.getAttribute("idper"));
-            Persona p = (Persona)dao.list(id);
+            ClienteDAO dao = new ClienteDAO();
+            int id = Integer.parseInt((String)request.getAttribute("idcli"));
+            Cliente c = (Cliente)dao.liscli(id);
             %>
             <h1>Editar Persona</h1>
         <form action="controlador1.do">
             ID:<br>
-            DNI:<input type="text" name="txtDni" value="<%= p.getDni()%>"><br>
-            Nombres:<input type="text" name="txtNom" value="<%= p.getNom()%>"><br>
-            <input type="hidden" name="txtid" value="<%= p.getId()%>">
+            DNI:<input type="text" name="txtDni" value="<%//= p.getDni()%>"><br>
+            Nombres:<input type="text" name="txtNom" value="<%//= p.getNom()%>"><br>
+            <input type="hidden" name="txtid" value="<%//= p.getId()%>">
             <input type="submit" name="accion" value="Actualizar"><br>
         </form>
         </div>

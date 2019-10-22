@@ -5,9 +5,9 @@
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="modelo.Persona"%>
+<%@page import="modelo.Cliente"%>
 <%@page import="java.util.List"%>
-<%@page import="modeloDAO.PersonaDAO"%>
+<%@page import="modeloDAO.ClienteDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,15 +27,15 @@
                 </div>
             </div>
         </header>
-        
+
 
         <nav class="main-nav">
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
-                    <li class="menu_item"><a href="main" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlador1.do?accion=listar" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="sesion" class="menu_link" id="som">Somos</a></li>
+                    <li class="menu_item"><a href="./" class="menu_link menu_link_select" id="ini">Inicio</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
+                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
                     <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
                     <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
                 </ul>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </nav>
-        <h1>Personas</h1>
+        <!--<h1>Personas</h1>
         <a href="controlador1.do?accion=add">Agregar</a>
         <table border="1">
             <thead>
@@ -56,30 +56,107 @@
                     <th>ACCIONES</th>
                 </tr>
             </thead>
+        <%
+            /*      PersonaDAO dao = new PersonaDAO();
+             List<Persona>list=dao.listar();
+             Iterator<Persona>iter=list.iterator();
+             Persona per=null;
+             while(iter.hasNext()){
+                 per=iter.next(); */
+
+        %> 
+        <tbody>
+            <tr>
+                <td><%//= per.getId()%></td>
+                <td><%//= per.getDni() %></td>
+                <td><%//= per.getNom() %></td>
+                <td>
+                    <a href="controlador1.do?accion=editar&id=<%//= per.getId()%>">editar</a>
+                    <a href="controlador1.do?accion=eliminar&id=<%//= per.getId()%>">remover</a>
+                </td>
+                
+            </tr>
+        <% //} %>
+    </tbody>
+</table>-->
+        <main class="main">
             <%
-                PersonaDAO dao = new PersonaDAO();
-                List<Persona>list=dao.listar();
-                Iterator<Persona>iter=list.iterator();
-                Persona per=null;
-                while(iter.hasNext()){
-                    per=iter.next();
- 
+                /*      PersonaDAO dao = new PersonaDAO();
+            List<Persona>list=dao.listar();
+            Iterator<Persona>iter=list.iterator();
+            Persona per=null;
+            while(iter.hasNext()){
+                per=iter.next(); */
+
+            %><% /*      PersonaDAO dao = new PersonaDAO();
+            List<Persona>list=dao.listar();
+            Iterator<Persona>iter=list.iterator();
+            Persona per=null;
+            while(iter.hasNext()){
+                per=iter.next(); */
+
             %>
-            <tbody>
-                <tr>
-                    <td><%= per.getId()%></td>
-                    <td><%= per.getDni() %></td>
-                    <td><%= per.getNom() %></td>
-                    <td>
-                        <a href="controlador1.do?accion=editar&id=<%= per.getId()%>">editar</a>
-                        <a href="controlador1.do?accion=eliminar&id=<%= per.getId()%>">remover</a>
-                    </td>
+            <section class="group today-special">
+                <h2 class="group_title">Las mejores ofertas</h2>
+                <div class="container container_flex">
+                    <%  ClienteDAO dao = new ClienteDAO();
+                        List<Cliente> list = dao.listarcli();
+                        Iterator<Cliente> iter = list.iterator();
+                        Cliente per = null;
+                        while (iter.hasNext()) {
+                            per = iter.next();
+
+                    %>
+                    <div class="column column_50-25">
+                        <img src="img/sub.jpg" alt="" class="today-special_img">
+                        <div class="today-special_title"><%= per.getIdcli()%></div>
+                        
+                    </div>
+                        <% } %>
                     
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-             <footer class="main-footer">
+                </div>
+            </section>
+        </main>
+        <main class="main">
+
+            <section class="group today-special">
+                <h2 class="group_title">Lo que estas buscando</h2>
+                <div class="container container_flex">
+                    <div class="column column_50-25">
+                        <img src="img/cat/agu.jpg" alt="" class="today-special_img">
+                        <div class="today-special_title">Aguas</div>
+
+                    </div>
+                    <div class="column column_50-25">
+                        <img src="img/cat/ene.jpg" alt="" class="today-special_img">
+                        <div class="today-special_title">Energizantes</div>
+
+                    </div>
+                    <div class="column column_50-25">
+                        <img src="img/cat/gas.jpg" alt="" class="today-special_img">
+                        <div class="today-special_title">Gaseosas</div>
+
+                    </div>
+                    <div class="column column_50-25">
+                        <img src="img/cat/yog.jpg" alt="" class="today-special_img">
+                        <div class="today-special_title">Yogures</div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="group today-special">
+
+                <div class="container container_flex">
+                    <div class="column column_50-25">
+                        <img src="img/cat/nec.jpg" alt="" class="today-special_img">
+                        <div class="today-special_title">Nectares</div>
+
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">
                     <h2 class="column_title">¿Porque visitarnos?</h2>
@@ -102,6 +179,6 @@
         </footer>
 
         <script src="js/menu.js"></script>
-        
+
     </body>
 </html>

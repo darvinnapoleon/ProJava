@@ -1,15 +1,23 @@
+<%-- 
+    Document   : listar
+    Created on : 03/10/2019, 03:18:11 PM
+    Author     : WS-24
+--%>
+
+<%@page import="java.util.Iterator"%>
+<%@page import="modelo.Categoria"%>
+<%@page import="java.util.List"%>
+<%@page import="modeloDAO.CategoriaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
         <title>login</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
-    </head>
-        <title>Document</title>
     </head>
     <body>
         <header class="main-header">
@@ -19,8 +27,6 @@
                 </div>
             </div>
         </header>
-        
-
         <nav class="main-nav">
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
@@ -32,50 +38,33 @@
                     <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
-                    <a href="controlcli.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
+                    <a href="controlador1.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
                     <a href="" class="social-icon_link"><span class="icon-basket"></span></a>
                 </div>
             </div>
         </nav>
-        <section class="banner">
-		<img src="img/banner.jpg" alt="" class="banner_img">
-		<div class="banner_content">Disfruta de dulcura hoy mismo</div>
-	</section>
+        <main class="main">
+            <section class="group today-special">
+                <h2 class="group_title">Las mejores ofertas</h2>
+                <div class="container container_flex">
+                    <%  CategoriaDAO dao = new CategoriaDAO();
+                        List<Categoria> list = dao.listarcat();
+                        Iterator<Categoria> iter = list.iterator();
+                        Categoria cat = null;
+                        while (iter.hasNext()) {
+                            cat = iter.next();
 
-	<main class="main">
-		<section class="group group-color">
-			<div class="container">
-				<h2 class="main_title">Bienvenido a Golosinas Anita</h2>
-				<p class="main_txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus natus minus sapiente recusandae repudiandae, dolore exercitationem ea ex corporis numquam, mollitia sint illum labore qui, rerum omnis ab dicta quas!</p>
-			</div>
-		</section>
-		<section class="group today-special">
-			<h2 class="group_title">Las mejores ofertas</h2>
-			<div class="container container_flex">
-				<div class="column column_50-25">
-					<img src="img/sub.jpg" alt="" class="today-special_img">
-					<div class="today-special_title">Especial del dia 1</div>
-					<div class="today-special_price">s/99</div>
-				</div>
-				<div class="column column_50-25">
-					<img src="img/cas.png" alt="" class="today-special_img">
-					<div class="today-special_title">Especial del dia 2</div>
-					<div class="today-special_price">s/99</div>
-				</div>
-				<div class="column column_50-25">
-					<img src="img/lay.jpg" alt="" class="today-special_img">
-					<div class="today-special_title">Especial del dia 3</div>
-					<div class="today-special_price">s/99</div>
-				</div>
-				<div class="column column_50-25">
-					<img src="img/cop.jpg" alt="" class="today-special_img">
-					<div class="today-special_title">Especial del dia 4</div>
-					<div class="today-special_price">s/99</div>
-				</div>
-			</div>
-		</section>
-	</main>
-               <footer class="main-footer">
+                    %>
+                        <div class="column column_50-25">
+                        <img src="controlimg.do?idcat=<%= cat.getIdcat() %>" alt="" class="today-special_img" href="napo.html">
+                        <div class="today-special_title"><%= cat.getNomcat()%></div>
+                    </div>    
+                        <% } %>
+                    
+                </div>
+            </section>
+        </main>     
+        <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">
                     <h2 class="column_title">¿Porque visitarnos?</h2>
@@ -98,5 +87,6 @@
         </footer>
 
         <script src="js/menu.js"></script>
+
     </body>
 </html>

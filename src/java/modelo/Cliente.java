@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
-/**
- *
- * @author DARVIN
- */
+import java.io.InputStream;
+
 public class Cliente {
     int idcli;
     String nomcli;
@@ -16,17 +9,19 @@ public class Cliente {
     String telcli;
     String usucli;
     String concli;
+    InputStream fotcli;  
 
     public Cliente() {
     }
 
-    public Cliente(int idcli, String nomcli, String apecli, String telcli, String usucli, String concli) {
+    public Cliente(int idcli, String nomcli, String apecli, String telcli, String usucli, String concli, InputStream fotcli) {
         this.idcli = idcli;
         this.nomcli = nomcli;
         this.apecli = apecli;
         this.telcli = telcli;
         this.usucli = usucli;
         this.concli = concli;
+        this.fotcli = fotcli;
     }
 
     public int getIdcli() {
@@ -76,6 +71,13 @@ public class Cliente {
     public void setConcli(String concli) {
         this.concli = concli;
     }
-    
+
+    public InputStream getFotcli() {
+        return fotcli;
+    }
+
+    public void setFotcli(InputStream fotcli) {
+        this.fotcli = fotcli;
+    }
     
 }

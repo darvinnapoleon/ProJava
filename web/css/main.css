@@ -44,6 +44,9 @@
 	margin: auto;
 	max-width: 350px;
 }
+.today-special_img:hover{
+	cursor: pointer;
+}
 .today-special_title{
 	font-size:1.3em;
 	padding-top: 10px;

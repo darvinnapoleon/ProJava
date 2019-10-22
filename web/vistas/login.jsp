@@ -24,9 +24,9 @@
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
-                    <li class="menu_item"><a href="main" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlador1.do?accion=listar" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="sesion" class="menu_link" id="som">Somos</a></li>
+                    <li class="menu_item"><a href="./" class="menu_link menu_link_select" id="ini">Inicio</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
+                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
                     <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
                     <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
                 </ul>
@@ -38,7 +38,10 @@
         </nav>
         <section class="banner">
 		<img src="img/banner1.jpg" alt="" class="banner_img">
-		<div class="banner_content"><form method="POST" action="controlador.do" name="datusu">
+		<div class="banner_content">Disfruta de dulcura hoy mismo</div>
+	</section>
+       
+                    <form method="POST" action="controlcli.do" name="datusu">
             <table border="1"  class="tabla tabusu">            
                 <tr>
                     <td colspan="2"><center><h1>Iniciar sesión</h1></center></td>
@@ -59,8 +62,8 @@
                     <td colspan="2"><center><input class ="input inpsub" type="submit" name="accion" value="Ingresar" ></center></td>  
                 </tr>
             </table>
-        </form></div>
-	</section>
+        </form>
+	
 	
                <footer class="main-footer">
             <div class="container container_flex">
