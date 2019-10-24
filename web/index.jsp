@@ -25,11 +25,11 @@
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
-                    <li class="menu_item"><a href="./" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
-                    <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
-                    <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
+                    <li class="menu_item"><a href="./" class="menu_link menu_link_select">Inicio</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link">Categoria</a></li>
+                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" >Somos</a></li>
+                    <li class="menu_item"><a href="consulta" class="menu_link">Consulta</a></li>
+                    <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
                     <a href="controlcli.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
