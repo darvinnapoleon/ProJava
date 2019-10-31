@@ -2,7 +2,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class controlCat extends HttpServlet {
-    String liscat = "vistas/liscat.jsp";
+    String liscat = "vistas/catlis.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

@@ -16,9 +16,6 @@ import modeloDAO.ClienteDAO;
 public class controlCli extends HttpServlet {
 
     String login = "vistas/login.jsp";
-    String listar = "vistas/listar.jsp";
-    String add = "vistas/add.jsp";
-    String edit = "vistas/edit.jsp";
     String cont;
     String index = "index.jsp";
     ClienteDAO dao = new ClienteDAO();
@@ -49,55 +46,8 @@ public class controlCli extends HttpServlet {
             }
         }else if(action.equalsIgnoreCase("login")){
             acceso=login;
-        }else if (action.equalsIgnoreCase("listar")) {
-            acceso = listar;
-        } else if (action.equalsIgnoreCase("add")) {
-            acceso = add;
-        } else if (action.equalsIgnoreCase("Agregar")) {
-            id=Integer.parseInt(request.getParameter("idcli"));
-            String nomcli = request.getParameter("nomcli");
-            String apecli = request.getParameter("apecli");
-            String telcli = request.getParameter("telcli");
-            String usucli = request.getParameter("usucli");
-            String concli = request.getParameter("concli");
-            String fotcli = request.getParameter("fotcli");
-            c.setIdcli(id);
-            c.setNomcli(nomcli);
-            c.setApecli(apecli);
-            c.setApecli(telcli);
-            c.setApecli(usucli);
-            c.setApecli(concli);
-            c.setApecli(fotcli);
-            dao.addcli(c);
-            acceso = listar;
-
-        } else if (action.equalsIgnoreCase("editar")) {
-            request.setAttribute("idcli", request.getParameter("idcli"));
-            acceso = edit;
-        } else if (action.equalsIgnoreCase("Actualizar")) {
-            id=Integer.parseInt(request.getParameter("idcli"));
-            String nomcli = request.getParameter("nomcli");
-            String apecli = request.getParameter("apecli");
-            String telcli = request.getParameter("telcli");
-            String usucli = request.getParameter("usucli");
-            String concli = request.getParameter("concli");
-            String fotcli = request.getParameter("fotcli");
-            c.setIdcli(id);
-            c.setNomcli(nomcli);
-            c.setApecli(apecli);
-            c.setApecli(telcli);
-            c.setApecli(usucli);
-            c.setApecli(concli);
-            c.setApecli(fotcli);
-            dao.edicli(c);
-            acceso=listar;
         }
-        else if(action.equalsIgnoreCase("eliminar")){
-            id=Integer.parseInt(request.getParameter("idcli"));
-            c.setIdcli(id);
-            dao.delcli(id);
-            acceso=listar;
-        }
+        
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
 

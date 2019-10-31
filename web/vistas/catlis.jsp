@@ -1,11 +1,8 @@
-<%-- 
-    Document   : edit
-    Created on : 03/10/2019, 03:18:55 PM
-    Author     : WS-24
---%>
 
-<%@page import="modelo.Cliente"%>
-<%@page import="modeloDAO.ClienteDAO"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="modelo.Categoria"%>
+<%@page import="java.util.List"%>
+<%@page import="modeloDAO.CategoriaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-        <title>login</title>
+        <title>categoria</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
     </head>
@@ -25,17 +22,13 @@
                 </div>
             </div>
         </header>
-        
-
         <nav class="main-nav">
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
-                    <li class="menu_item"><a href="main" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
-                    <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
-                    <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
+                    <li class="menu_item"><a href="./" class="menu_link ">Inicio</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link menu_link_select">Categoria</a></li>                   
+                    <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
                     <a href="controlador1.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
@@ -43,22 +36,28 @@
                 </div>
             </div>
         </nav>
-        <div>
-            <% 
-            ClienteDAO dao = new ClienteDAO();
-            int id = Integer.parseInt((String)request.getAttribute("idcli"));
-            Cliente c = (Cliente)dao.liscli(id);
-            %>
-            <h1>Editar Persona</h1>
-        <form action="controlador1.do">
-            ID:<br>
-            DNI:<input type="text" name="txtDni" value="<%//= p.getDni()%>"><br>
-            Nombres:<input type="text" name="txtNom" value="<%//= p.getNom()%>"><br>
-            <input type="hidden" name="txtid" value="<%//= p.getId()%>">
-            <input type="submit" name="accion" value="Actualizar"><br>
-        </form>
-        </div>
-         <footer class="main-footer">
+        <main class="main">
+            <section class="group today-special">
+                <h2 class="group_title">Lo que tu prefieras</h2>
+                <div class="container container_flex">
+                    <%  CategoriaDAO dao = new CategoriaDAO();
+                        List<Categoria> list = dao.listarcat();
+                        Iterator<Categoria> iter = list.iterator();
+                        Categoria cat = null;
+                        while (iter.hasNext()) {
+                            cat = iter.next();
+
+                    %>
+                        <div class="column column_50-25">
+                            <a href="controlpro.do?accion=lispro&id=<%= cat.getIdcat()%>"> <img src="controlimg.do?accion=imgcat&idcat=<%= cat.getIdcat() %>" alt="" class="today-special_img"></a>
+                        <div class="today-special_title"><%= cat.getNomcat()%></div>
+                    </div>    
+                        <% } %>
+                    
+                </div>
+            </section>
+        </main>     
+        <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">
                     <h2 class="column_title">¿Porque visitarnos?</h2>
@@ -81,6 +80,6 @@
         </footer>
 
         <script src="js/menu.js"></script>
-        
+
     </body>
 </html>

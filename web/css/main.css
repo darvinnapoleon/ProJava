@@ -16,18 +16,22 @@
 }.colum-title{
 	font-size:1.3em;
 }
-.main-about-description .column:nth-child(2){
+.main-about-description .column:nth-child(2) {
 	padding: 10px;
 }
 .btn{
 	display: block;
 	text-align: center;
-	text-decoration: none;
-	width: 120px;
+	width: 250px;
 	background: #DE423A;
 	color: white;
 	padding: 10px;
 	margin: 10px auto;
+        border: 2px solid #DE423A;
+        border-radius: 5px;
+}
+.btn:hover{
+    cursor: pointer;
 }
 .group_title{
 	font-family: 'Pacifico', cursive;

@@ -1,8 +1,13 @@
+<%-- 
+    Document   : listar
+    Created on : 03/10/2019, 03:18:11 PM
+    Author     : WS-24
+--%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="modelo.Categoria"%>
+<%@page import="modelo.Producto"%>
 <%@page import="java.util.List"%>
-<%@page import="modeloDAO.CategoriaDAO"%>
+<%@page import="modeloDAO.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-        <title>login</title>
+        <title>producto</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
     </head>
@@ -26,11 +31,9 @@
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
-                    <li class="menu_item"><a href="./" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
-                    <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
-                    <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
+                    <li class="menu_item"><a href="./" class="menu_link">Inicio</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link menu_link_select">Categoria</a></li>
+                    <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
                     <a href="controlador1.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
@@ -40,19 +43,21 @@
         </nav>
         <main class="main">
             <section class="group today-special">
-                <h2 class="group_title">Lo que tu prefieras</h2>
+                <h2 class="group_title">Disfruta de frescura</h2>
                 <div class="container container_flex">
-                    <%  CategoriaDAO dao = new CategoriaDAO();
-                        List<Categoria> list = dao.listarcat();
-                        Iterator<Categoria> iter = list.iterator();
-                        Categoria cat = null;
+                    <%  ProductoDAO dao = new ProductoDAO();
+                    int id = Integer.parseInt((String)request.getAttribute("idcat"));
+                        List<Producto> list = dao.listarpro(id);
+                        Iterator<Producto> iter = list.iterator();
+                        Producto pro = null;
                         while (iter.hasNext()) {
-                            cat = iter.next();
+                            pro = iter.next();
 
                     %>
                         <div class="column column_50-25">
-                            <a href="controlpro.do?accion=lispro&id=<%= cat.getIdcat()%>"> <img src="controlimg.do?accion=imgcat&idcat=<%= cat.getIdcat() %>" alt="" class="today-special_img"></a>
-                        <div class="today-special_title"><%= cat.getNomcat()%></div>
+                            <a href="controlpro.do?accion=detpro&id=<%= pro.getIdpro()%>"><img src="controlimg.do?accion=imgpro&idpro=<%= pro.getIdpro() %>" alt="" class="today-special_img" ></a>
+                        <div class="today-special_title"><%= pro.getNompro()%></div>
+                        <div class="today-special_price"><%= pro.getPreven()%></div>
                     </div>    
                         <% } %>
                     
@@ -85,3 +90,4 @@
 
     </body>
 </html>
+

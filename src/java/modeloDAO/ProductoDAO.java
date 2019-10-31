@@ -36,7 +36,7 @@ public class ProductoDAO implements CRUDPro{
                 pro.setNompro(rs.getString("nompro"));
                 pro.setPreven(rs.getDouble("preven"));
                 pro.setStopro(rs.getInt("stopro"));
-               pro.setFotcli(rs.getBinaryStream("fotpro"));
+                pro.setFotpro(rs.getBinaryStream("fotpro"));
                 list.add(pro);
             }
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class ProductoDAO implements CRUDPro{
         return list;
     }
  public void listarImg(int id, HttpServletResponse response){
-        String sql="select * from producto where idpro="+id;
+        String sql="select * from producto where idpro=" + id;
         InputStream inputStream = null;
         OutputStream outputStream = null;
         BufferedInputStream bufferedInputStream = null;
@@ -70,8 +70,33 @@ public class ProductoDAO implements CRUDPro{
         }   
 }
     @Override
-    public Producto lispro(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Producto  lisprodet(int id) {
+        
+    
+        String sql = "SELECT p.idpro, p.nompro, p.preven, "
+                + "p.stopro, p.preven, m.nommar, pe.nompes,s.nomsab FROM producto AS p "
+                + "INNER JOIN marca AS m "
+                + "INNER JOIN peso as pe INNER JOIN sabor as s ON p.idmar = m.idmar && "
+                + "p.idpes = pe.idpes && p.idsab=s.idsab "
+                + "where idpro="+id;
+       try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                p.setIdpro(rs.getInt("idpro"));
+                p.setNompro(rs.getString("nompro"));
+                p.setPreven(rs.getDouble("preven"));
+                p.setStopro(rs.getInt("stopro"));
+                p.setNommar(rs.getString("nommar"));
+                p.setNompes(rs.getString("nompes"));
+                p.setNomsab(rs.getString("nomsab"));
+                p.setFotpro(rs.getBinaryStream("fotpro"));
+            }
+        } catch (Exception e) {
+
+        }
+        return p;
     }
 
     @Override

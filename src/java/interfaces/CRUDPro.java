@@ -7,7 +7,7 @@ import modelo.Producto;
 public interface CRUDPro {
     public List listarpro(int id);
     
-    public Producto lispro(int id);
+    public Producto lisprodet(int id);
 
     public boolean addpro(Producto pro);
 

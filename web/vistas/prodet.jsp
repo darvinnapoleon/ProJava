@@ -4,6 +4,7 @@
     Author     : WS-24
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="modelo.Producto"%>
 <%@page import="java.util.List"%>
@@ -15,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-        <title>producto</title>
+        <title>detproducto</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
     </head>
@@ -31,11 +32,9 @@
             <div class="container container_flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
-                    <li class="menu_item"><a href="./" class="menu_link menu_link_select" id="ini">Inicio</a></li>
-                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link" id="cat">Categoria</a></li>
-                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" id="som">Somos</a></li>
-                    <li class="menu_item"><a href="consulta" class="menu_link" id="con">Consulta</a></li>
-                    <li class="menu_item"><a href="ayuda" class="menu_link" id="ofe">Ofertas</a></li>
+                    <li class="menu_item"><a href="./" class="menu_link">Inicio</a></li>
+                    <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link menu_link_select">Categoria</a></li>
+                    <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
                     <a href="controlador1.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
@@ -43,29 +42,37 @@
                 </div>
             </div>
         </nav>
-        <main class="main">
-            <section class="group today-special">
-                <h2 class="group_title">Disfruta de frescura</h2>
+        <%
+            ProductoDAO dao = new ProductoDAO();
+            int id = Integer.parseInt((String) request.getAttribute("idpro"));
+            Producto p = (Producto) dao.lisprodet(id);
+        %> 
+        <div class="main">
+            <section class="group main-about-description">
                 <div class="container container_flex">
-                    <%  ProductoDAO dao = new ProductoDAO();
-                    int id = Integer.parseInt((String)request.getAttribute("idcat"));
-                        List<Producto> list = dao.listarpro(id);
-                        Iterator<Producto> iter = list.iterator();
-                        Producto pro = null;
-                        while (iter.hasNext()) {
-                            pro = iter.next();
-
-                    %>
-                        <div class="column column_50-25">
-                          <img src="controlimg.do?accion=imgpro&idpro=<%= pro.getIdpro() %>" alt="" class="today-special_img" >
-                        <div class="today-special_title"><%= pro.getNompro()%></div>
-                        <div class="today-special_price"><%= pro.getPreven()%></div>
-                    </div>    
-                        <% } %>
-                    
+                    <div class="column column--50">
+                        <img src="controlimg.do?accion=imgpro&idpro=<%=p.getIdpro()%>" alt="" class=""/>
+                    </div>
+                    <div class="column column--50">
+                        <form action="controlped.do" method="POST">
+                            <h3 class="colum-title"><%=p.getNompro()%> <%=p.getNommar()%> de <%=p.getNompes()%> <%=p.getNomsab()%></h3>
+                            <div class="column--50-space">Precio: <span class="today-special_price"><%=p.getPreven()%></span></div>
+                            <input type="hidden" value="<%=p.getIdpro()%>">
+                            <div class="column--50-space">
+                                Cantidad: <select name="can" id="" class="column--50-list">
+                                    <% for (int i = 1; i < p.getStopro(); i++) {%>
+                                    <option value="<%=i%>"><%=i%></option>     
+                                    <% }%>
+                                </select> 
+                            </div>
+                            <div class="column--50-space">
+                                <input type="submit" value="Agregar al carrito" class="btn">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
-        </main>     
+        </div>
         <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">
@@ -92,4 +99,5 @@
 
     </body>
 </html>
+
 

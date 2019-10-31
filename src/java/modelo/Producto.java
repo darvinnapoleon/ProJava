@@ -1,9 +1,8 @@
 
 package modelo;
-
 import java.io.InputStream;
 
-public class Producto {
+public class Producto extends Pro {
     int idpro;
     String nompro;
     Double precom;
@@ -13,12 +12,12 @@ public class Producto {
     int idmar;
     int idpes;
     int idsab;
-    InputStream fotcli;
+    InputStream fotpro;
 
     public Producto() {
     }
 
-    public Producto(int idpro, String nompro, Double precom, Double preven, int stopro, int idcat, int idmar, int idpes, int idsab, InputStream fotcli) {
+    public Producto(int idpro, String nompro, Double precom, Double preven, int stopro, int idcat, int idmar, int idpes, int idsab, InputStream fotpro) {
         this.idpro = idpro;
         this.nompro = nompro;
         this.precom = precom;
@@ -28,7 +27,7 @@ public class Producto {
         this.idmar = idmar;
         this.idpes = idpes;
         this.idsab = idsab;
-        this.fotcli = fotcli;
+        this.fotpro = fotpro;
     }
 
     public int getIdpro() {
@@ -103,12 +102,12 @@ public class Producto {
         this.idsab = idsab;
     }
 
-    public InputStream getFotcli() {
-        return fotcli;
+    public InputStream getFotpro() {
+        return fotpro;
     }
 
-    public void setFotcli(InputStream fotcli) {
-        this.fotcli = fotcli;
+    public void setFotpro(InputStream fotpro) {
+        this.fotpro = fotpro;
     }
     
 }

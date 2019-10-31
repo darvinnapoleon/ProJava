@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-        <title>login</title>
+        <title>principal</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
     </head>
@@ -27,8 +27,6 @@
                 <ul class="menu" id="menu">
                     <li class="menu_item"><a href="./" class="menu_link menu_link_select">Inicio</a></li>
                     <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link">Categoria</a></li>
-                    <li class="menu_item"><a href="controlcli.do?accion=listar" class="menu_link" >Somos</a></li>
-                    <li class="menu_item"><a href="consulta" class="menu_link">Consulta</a></li>
                     <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
@@ -39,7 +37,7 @@
         </nav>
         <section class="banner">
 		<img src="img/banner.jpg" alt="" class="banner_img">
-		<div class="banner_content">Disfruta de dulcura hoy mismo</div>
+		<div class="banner_content">Disfruta de frescura hoy mismo</div>
 	</section>
 
 	<main class="main">
