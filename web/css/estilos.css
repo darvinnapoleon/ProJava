@@ -44,7 +44,21 @@ h1,h2,h3,h4,h5,h6{
 .column--50-list{    
     background-color: #ddd;
 }
-/*header*/
+  .out_table{
+    display: table;
+    width: 600px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+ .out_table .out_row{
+    display: table-row;
+   
+}
+ .out_table .out_row .out_cell{
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
 
 /*responsivo 480*/
 @media screen and (min-width:480px) {
@@ -131,7 +145,7 @@ h1,h2,h3,h4,h5,h6{
 /*responsivo 1024*/
 @media screen and (min-width:1024px){
 	.container{
-		width: 1000px;
+		width: 900px;
 	}
 	.logo{
 		font-size: 2em;
@@ -180,7 +194,7 @@ h1,h2,h3,h4,h5,h6{
 /*responsivo 1600*/
 @media screen and (min-width:1600px){
 	.container{
-		width: 1400px;
+		width: 1300px;
 	}
 	.main-about-description .column:nth-child(1) img{
 		width: 100%;

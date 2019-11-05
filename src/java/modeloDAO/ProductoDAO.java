@@ -114,5 +114,36 @@ public class ProductoDAO implements CRUDPro{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Producto lisprocar(int id) {
+        Producto pro = null;
+        String sql = "SELECT p.idpro, p.nompro, p.preven, "
+                + "p.stopro, p.preven, m.nommar, pe.nompes,s.nomsab FROM producto AS p "
+                + "INNER JOIN marca AS m "
+                + "INNER JOIN peso as pe INNER JOIN sabor as s ON p.idmar = m.idmar && "
+                + "p.idpes = pe.idpes && p.idsab=s.idsab "
+                + "where idpro="+id;
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                pro = new Producto();
+                pro.setIdpro(rs.getInt("idpro"));
+                pro.setNompro(rs.getString("nompro"));
+                pro.setPreven(rs.getDouble("preven"));
+                pro.setStopro(rs.getInt("stopro"));
+                pro.setNommar(rs.getString("nommar"));
+                pro.setNompes(rs.getString("nompes"));
+                pro.setNomsab(rs.getString("nomsab"));
+                pro.setFotpro(rs.getBinaryStream("fotpro"));
+                
+            }
+        } catch (Exception e) {
+
+        }
+        return pro;
+    }
+
    
 }

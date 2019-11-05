@@ -37,8 +37,8 @@
                     <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
-                    <a href="controlador1.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
-                    <a href="" class="social-icon_link"><span class="icon-basket"></span></a>
+                    <a href="controlcli.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
+                     <a href="controlped.do?accion=vercarrito" class="social-icon_link"><span class="icon-basket"></span></a>
                 </div>
             </div>
         </nav>
@@ -47,7 +47,7 @@
             int id = Integer.parseInt((String) request.getAttribute("idpro"));
             Producto p = (Producto) dao.lisprodet(id);
         %> 
-        <div class="main">
+        <main class="main">
             <section class="group main-about-description">
                 <div class="container container_flex">
                     <div class="column column--50">
@@ -57,9 +57,9 @@
                         <form action="controlped.do" method="POST">
                             <h3 class="colum-title"><%=p.getNompro()%> <%=p.getNommar()%> de <%=p.getNompes()%> <%=p.getNomsab()%></h3>
                             <div class="column--50-space">Precio: <span class="today-special_price"><%=p.getPreven()%></span></div>
-                            <input type="hidden" value="<%=p.getIdpro()%>">
+                            <input type="hidden" value="<%=p.getIdpro()%>" name="txtidpro">
                             <div class="column--50-space">
-                                Cantidad: <select name="can" id="" class="column--50-list">
+                                Cantidad: <select name="txtcanpro" id="" class="column--50-list">
                                     <% for (int i = 1; i < p.getStopro(); i++) {%>
                                     <option value="<%=i%>"><%=i%></option>     
                                     <% }%>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+        </main>
         <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">

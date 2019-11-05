@@ -1,9 +1,12 @@
-<%-- 
-    Document   : listar
-    Created on : 03/10/2019, 03:18:11 PM
-    Author     : WS-24
---%>
-
+<%@page import="java.lang.Math"%>
+<%@page import="controlador.controlPro"%>
+<%@page import="controlador.controlPed"%>
+<%@page import="modelo.Articulo"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    ArrayList<Articulo> articulos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
+%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="modelo.Producto"%>
 <%@page import="java.util.List"%>
@@ -15,7 +18,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=yes,
               initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-        <title>producto</title>
+        <title>carproducto</title>
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/fontello.css">
     </head>
@@ -37,33 +40,54 @@
                 </ul>
                 <div class="social-icon">
                     <a href="controlcli.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
-                    <a href="controlped.do?accion=vercarrito" class="social-icon_link"><span class="icon-basket"></span></a>
+                   <a href="controlped.do?accion=vercarrito" class="social-icon_link"><span class="icon-basket"></span></a>
                 </div>
             </div>
-        </nav>
+        </nav>               
         <main class="main">
-            <section class="group today-special">
-                <h2 class="group_title">Disfruta de frescura</h2>
-                <div class="container container_flex">
-                    <%  ProductoDAO dao = new ProductoDAO();
-                    int id = Integer.parseInt((String)request.getAttribute("idcat"));
-                        List<Producto> list = dao.listarpro(id);
-                        Iterator<Producto> iter = list.iterator();
-                        Producto pro = null;
-                        while (iter.hasNext()) {
-                            pro = iter.next();
-
-                    %>
-                        <div class="column column_50-25">
-                            <a href="controlpro.do?accion=detpro&id=<%= pro.getIdpro()%>"><img src="controlimg.do?accion=imgpro&idpro=<%= pro.getIdpro() %>" alt="" class="today-special_img" ></a>
-                        <div class="today-special_title"><%= pro.getNompro()%></div>
-                        <div class="today-special_price"><%= pro.getPreven()%></div>
-                    </div>    
-                        <% } %>
+            <section class="group main-about-description" id="">
+                <div><a href="javascript:window.history.go(-2);">Seguir Comprando</a></div>
+                <div class="container container_flex" id="tbody-alumnos">
                     
+                    
+                <% ProductoDAO dao = new ProductoDAO();
+                    for (Articulo a : articulos) {
+                        Producto pro = (Producto) dao.lisprocar(a.getIdpro());%>
+                        <div id="fila-<%=pro.getIdpro()%>">
+                <div class="column column--50">
+                    <div class=""><img src="controlimg.do?accion=imgpro&idpro=<%=pro.getIdpro()%>"></div>
                 </div>
+                <div class="column column--50">
+                        <div class="">
+                            <h3 class="colum-title"><%=pro.getNompro()%> <%=pro.getNommar()%> de <%=pro.getNompes()%> <%=pro.getNomsab()%></h3>
+                        </div>
+                        <div class="">
+                            <span class="today-special_price">
+                                s/<%=pro.getPreven()%>
+                            </span>
+                            <span>
+                                <a href="">-</a>
+                                <input type="number" value="<%= a.getCanpro()%>" name="txtcan">
+                                <a href="">+</a>
+                            </span>
+                            <span class="today-special_price">
+                                s/<%= Math.round(pro.getPreven() * a.getCanpro()*100.0)/100.0%>
+                            </span>
+                            <span class="">
+                                <button class="bEliminar" data-idpro="<%=pro.getIdpro()%>">
+                                    Eliminar
+                                </button>
+                            </span>
+                           
+                        </div>
+                </div>
+                        </div>
+                <% }%>
+                 </div>
+                 
             </section>
-        </main>     
+        </main>
+
         <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">
@@ -87,7 +111,8 @@
         </footer>
 
         <script src="js/menu.js"></script>
-
+        <script src="js/carrito.js"></script>   
     </body>
 </html>
+
 

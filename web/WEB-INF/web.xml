@@ -16,6 +16,10 @@
         <servlet-name>controlPro</servlet-name>
         <servlet-class>controlador.controlPro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controlPed</servlet-name>
+        <servlet-class>controlador.controlPed</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlCli</servlet-name>
         <url-pattern>/controlcli.do</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>controlPro</servlet-name>
         <url-pattern>/controlpro.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controlPed</servlet-name>
+        <url-pattern>/controlped.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

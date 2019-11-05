@@ -31,7 +31,7 @@
                 </ul>
                 <div class="social-icon">
                     <a href="controlcli.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
-                    <a href="" class="social-icon_link"><span class="icon-basket"></span></a>
+                     <a href="controlped.do?accion=vercarrito" class="social-icon_link"><span class="icon-basket"></span></a>
                 </div>
             </div>
         </nav>

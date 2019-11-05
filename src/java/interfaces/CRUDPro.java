@@ -6,6 +6,7 @@ import modelo.Producto;
 
 public interface CRUDPro {
     public List listarpro(int id);
+    public Producto lisprocar(int id);
     
     public Producto lisprodet(int id);
 
