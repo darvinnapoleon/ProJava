@@ -45,49 +45,48 @@
             </div>
         </nav>               
         <main class="main">
-            <section class="group main-about-description" id="">
-                <div><a href="javascript:window.history.go(-2);">Seguir Comprando</a></div>
-                <div class="container container_flex" id="tbody-alumnos">
-                    
-                    
+            <section class="group main-about-description" id="tbody-alumnos">
+                <a href="javascript:window.history.go(-2);">Seguir comprando</a>
+                <% if (articulos == null) { %>
+                <h3>No hay productos</h3>
+                <% }else{ %> <h3 id="rpts"></h3><% } %>
+                
                 <% ProductoDAO dao = new ProductoDAO();
+                double total = 0;
+                if (articulos != null) {
+                    
                     for (Articulo a : articulos) {
-                        Producto pro = (Producto) dao.lisprocar(a.getIdpro());%>
-                        <div id="fila-<%=pro.getIdpro()%>">
-                <div class="column column--50">
-                    <div class=""><img src="controlimg.do?accion=imgpro&idpro=<%=pro.getIdpro()%>"></div>
+                        Producto pro = (Producto) dao.lisprocar(a.getIdpro());
+                        total+= a.getCanpro() * pro.getPreven(); %>
+                <div class="container container_flex lisjs" id="fila-<%=pro.getIdpro()%>">  
+                    <div class="column column--50">
+                        <img src="controlimg.do?accion=imgpro&idpro=<%=pro.getIdpro()%>">
+                    </div>
+                    <div class="column column--50">
+                       <h3 class="colum-title"><%=pro.getNompro()%> <%=pro.getNommar()%> de 
+                       <%=pro.getNompes()%> <%=pro.getNomsab()%></h3>
+                        <span class="today-special_price"> s/<%=pro.getPreven()%> </span>
+                        <span><a href="">-</a><input type="number" value="<%= a.getCanpro()%>" name="txtcan"><a href="">+</a></span>
+                        <span class="today-special_price">s/<%= Math.round(pro.getPreven() * a.getCanpro()*100.0)/100.0%> </span> 
+                        <button class="bEliminar"  data-idpro="<%=pro.getIdpro()%>">Eliminar</button>
+                    </div>
                 </div>
-                <div class="column column--50">
-                        <div class="">
-                            <h3 class="colum-title"><%=pro.getNompro()%> <%=pro.getNommar()%> de <%=pro.getNompes()%> <%=pro.getNomsab()%></h3>
-                        </div>
-                        <div class="">
-                            <span class="today-special_price">
-                                s/<%=pro.getPreven()%>
-                            </span>
-                            <span>
-                                <a href="">-</a>
-                                <input type="number" value="<%= a.getCanpro()%>" name="txtcan">
-                                <a href="">+</a>
-                            </span>
-                            <span class="today-special_price">
-                                s/<%= Math.round(pro.getPreven() * a.getCanpro()*100.0)/100.0%>
-                            </span>
-                            <span class="">
-                                <button class="bEliminar" data-idpro="<%=pro.getIdpro()%>">
-                                    Eliminar
-                                </button>
-                            </span>
-                           
-                        </div>
-                </div>
-                        </div>
-                <% }%>
-                 </div>
-                 
+                <% } } %>   
             </section>
+            
+             
+            <section class="group"> 
+                <div class="container container_flex" >  
+                    <ul>
+                        <li>Sub Total <span id="txt-subtotal">s/<%=Math.round(total*100.0)/100.0 %></span></li>
+                        <li>IGV <span>s/0</span></li>
+                        <li>Costo de envio <span>s/0</span></li>
+                        <li>Total <span id="txt-total">s/<%=Math.round(total*100.0)/100.0 %></span></li>
+                    </ul>
+                </div>
+            </section>    
         </main>
-
+       
         <footer class="main-footer">
             <div class="container container_flex">
                 <div class="column column--33">

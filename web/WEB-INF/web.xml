@@ -20,6 +20,10 @@
         <servlet-name>controlPed</servlet-name>
         <servlet-class>controlador.controlPed</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteItem</servlet-name>
+        <servlet-class>controlador.DeleteItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlCli</servlet-name>
         <url-pattern>/controlcli.do</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>controlPed</servlet-name>
         <url-pattern>/controlped.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteItem</servlet-name>
+        <url-pattern>/deleteitem.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

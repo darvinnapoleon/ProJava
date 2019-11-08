@@ -6,21 +6,23 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.Articulo;
+import modelo.Producto;
+import modeloDAO.ProductoDAO;
 
 /**
  *
  * @author DARVIN
  */
-public class controlPed extends HttpServlet {
-  String liscar= "vistas/procar.jsp";
+public class DeleteItem extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,26 +35,8 @@ public class controlPed extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int can= Integer.parseInt(request.getParameter("txtcanpro"));
-        int id= Integer.parseInt(request.getParameter("txtidpro"));
-        HttpSession sesion = request.getSession(true);
-        ArrayList<Articulo> articulos = sesion.getAttribute("carrito") == null ? new ArrayList<>() : (ArrayList)sesion.getAttribute("carrito"); 
-        boolean flag = false;
-        if(articulos.size() > 0){
-            for(Articulo a : articulos){
-                if(id== a.getIdpro()){
-                a.setCanpro(a.getCanpro() + can);
-                flag = true;
-                break;
-                }
-            }
-        }
-        if(!flag){
-            articulos.add(new Articulo(id, can));
-        }
-        sesion.setAttribute("carrito", articulos);
-        RequestDispatcher vista = request.getRequestDispatcher("vistas/procar.jsp");
-        vista.forward(request, response);
+       
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,13 +51,26 @@ public class controlPed extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String acceso = "";
-        String action = request.getParameter("accion");
-        if (action.equalsIgnoreCase("vercarrito")) {
-             acceso = liscar;
-        }
-        RequestDispatcher vista = request.getRequestDispatcher(acceso);
-        vista.forward(request, response);
+        //processRequest(request, response);
+        int idpro =Integer.parseInt(request.getParameter("idpro"));
+        HttpSession sesion = request.getSession(true);
+        ArrayList<Articulo> articulos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
+        if(articulos != null){
+        for(Articulo a: articulos){
+            if(a.getIdpro() == idpro){
+                articulos.remove(a);
+                break;
+            }
+        } }
+        
+        double total=0;
+         ProductoDAO dao = new ProductoDAO();
+      for(Articulo a: articulos){
+            Producto pro = (Producto) dao.lisprocar(a.getIdpro());
+            total += a.getCanpro() * pro.getPreven();  
+        }  
+      PrintWriter pw = response.getWriter();
+      pw.print((total*100)/100.0);
     }
 
     /**

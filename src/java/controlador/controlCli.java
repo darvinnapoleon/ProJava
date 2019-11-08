@@ -79,16 +79,7 @@ public class controlCli extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*int idpro =Integer.parseInt(request.getParameter("idpro"));
-        HttpSession sesion = request.getSession(true);
-        ArrayList<Articulo> articulos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
-        if(articulos != null){
-        for(Articulo a: articulos){
-            if(a.getIdpro() == idpro){
-                articulos.remove(a);
-                break;
-            }
-        } }*/
+        processRequest(request, response);
     }
 
     /**

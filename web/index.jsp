@@ -27,7 +27,7 @@
                 <ul class="menu" id="menu">
                     <li class="menu_item"><a href="./" class="menu_link menu_link_select">Inicio</a></li>
                     <li class="menu_item"><a href="controlcat.do?accion=liscat" class="menu_link">Categoria</a></li>
-                    <li class="menu_item"><a href="ayuda" class="menu_link">Ofertas</a></li>
+                    <li class="menu_item"><a href="vistas/newjsp.jsp" class="menu_link">Ofertas</a></li>
                 </ul>
                 <div class="social-icon">
                     <a href="controlcli.do?accion=login" class="social-icon_link"><span class="icon-user"></span></a>
