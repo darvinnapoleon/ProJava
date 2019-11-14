@@ -16,6 +16,7 @@ import modeloDAO.ClienteDAO;
 public class controlCli extends HttpServlet {
 
     String login = "vistas/login.jsp";
+    String regcli = "vistas/clireg.jsp";
     String cont;
     String index = "index.jsp";
     ClienteDAO dao = new ClienteDAO();
@@ -44,8 +45,10 @@ public class controlCli extends HttpServlet {
             } else {
                 acceso = login;
             }
-        }else if(action.equalsIgnoreCase("login")){
+        } if(action.equalsIgnoreCase("login")){
             acceso=login;
+        }else if(action.equalsIgnoreCase("clireg")){
+            acceso=regcli;
         }
         
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
