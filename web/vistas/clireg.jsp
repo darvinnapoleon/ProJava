@@ -19,10 +19,10 @@
                         <li><h2>Iniciar sesión</h2></li>
                         <li><input type="text" name="usucli" placeholder="Ingrese usuario" required="" class="input inptex"></li>
                         <li><input type="password" name="concli" placeholder="Contraseña" required="" class="input inptex"></li>
-                        <li><input class ="input inpsub" type="submit" name="accion" value="Ingresar" ></li>       
+                        <li><input class ="input inpsub" type="submit" name="accion" value="Registrarse" ></li>       
                     </ul>
                     </form>
-                    <a href="controlcli.do?accion=clireg"><button>Registrarse</button></a>
+                    <a href="controlcli.do?accion=login"><button>Ingresar</button></a>
                 </div>
             </section>
         </main>
