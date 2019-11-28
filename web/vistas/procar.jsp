@@ -47,34 +47,35 @@
         <main class="main">
             <section class="group main-about-description" id="tbody-alumnos">
                 <a href="javascript:window.history.go(-2);">Seguir comprando</a>
-                <% if (articulos == null) { %>
-                <h3>No hay productos</h3>
-                <% }else{ %> <h3 id="rpts"></h3><% } %>
-                
+                <% if (articulos == null) { %><h3>No hay productos</h3><% }else{ %> <h3 id="rpts"></h3><% } %>
                 <% ProductoDAO dao = new ProductoDAO();
                 double total = 0;
                 if (articulos != null) {
-                    
                     for (Articulo a : articulos) {
                         Producto pro = (Producto) dao.lisprocar(a.getIdpro());
                         total+= a.getCanpro() * pro.getPreven(); %>
-                <div class="container container_flex lisjs" id="fila-<%=pro.getIdpro()%>">  
+                        <div class="container container_flex lisjs" id="fila-<%=pro.getIdpro()%>" style="border: 1px solid #666666;">  
                     <div class="column column--50">
-                        <img src="controlimg.do?accion=imgpro&idpro=<%=pro.getIdpro()%>">
+                        <center><img src="controlimg.do?accion=imgpro&idpro=<%=pro.getIdpro()%>" style="height:100px; width: 100px; object-fit: cover;"></center>
                     </div>
                     <div class="column column--50">
-                       <h3 class="colum-title"><%=pro.getNompro()%> <%=pro.getNommar()%> de 
-                       <%=pro.getNompes()%> <%=pro.getNomsab()%></h3>
+                       <h4 class="colum-title"><%=pro.getNompro()%> <%=pro.getNommar()%> de 
+                       <%=pro.getNompes()%> <%=pro.getNomsab()%></h4>
                         <span class="today-special_price"> s/<%=pro.getPreven()%> </span>
-                        <span><a href="">-</a><input type="number" value="<%= a.getCanpro()%>" name="txtcan"><a href="">+</a></span>
-                        <span class="today-special_price">s/<%= Math.round(pro.getPreven() * a.getCanpro()*100.0)/100.0%> </span> 
-                        <button class="bEliminar"  data-idpro="<%=pro.getIdpro()%>">Eliminar</button>
+                        <span>
+                            <input type="text" value="<%= a.getCanpro()%>" name="txtcan" 
+                                   class="today-special-cantidad" style="text-align:center;"
+                                   data-idpro="<%=pro.getIdpro()%>" 
+                                   data-pre="<%=pro.getPreven()%>" id="cantidad"/>
+                        </span>
+                            
+                        <span class="today-special_price" id="txt-prosub-<%=pro.getIdpro()%>">s/<%= Math.round(pro.getPreven() * a.getCanpro()*100.0)/100.0%> </span> 
+                        <button class="bEliminar"  data-idpro="<%=pro.getIdpro()%>">x</button>
                     </div>
                 </div>
-                <% } } %>   
+                <% } } %> 
+
             </section>
-            
-             
             <section class="group"> 
                 <div class="container container_flex" >  
                     <ul>
@@ -110,7 +111,7 @@
         </footer>
 
         <script src="js/menu.js"></script>
-        <script src="js/carrito.js"></script>   
+        <script src="js/carrito.js" type="text/javascript"></script>   
     </body>
 </html>
 

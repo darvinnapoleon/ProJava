@@ -31,7 +31,7 @@ public class controlPed extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int can= Integer.parseInt(request.getParameter("txtcanpro"));
         int id= Integer.parseInt(request.getParameter("txtidpro"));
@@ -40,7 +40,7 @@ public class controlPed extends HttpServlet {
         boolean flag = false;
         if(articulos.size() > 0){
             for(Articulo a : articulos){
-                if(id== a.getIdpro()){
+                if(id == a.getIdpro()){
                 a.setCanpro(a.getCanpro() + can);
                 flag = true;
                 break;

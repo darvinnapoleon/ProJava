@@ -55,6 +55,9 @@ public class DeleteItem extends HttpServlet {
         int idpro =Integer.parseInt(request.getParameter("idpro"));
         HttpSession sesion = request.getSession(true);
         ArrayList<Articulo> articulos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
+        String action = request.getParameter("accion");
+        double total=0;
+        if (action.equalsIgnoreCase("delete")) {
         if(articulos != null){
         for(Articulo a: articulos){
             if(a.getIdpro() == idpro){
@@ -63,14 +66,28 @@ public class DeleteItem extends HttpServlet {
             }
         } }
         
-        double total=0;
+        
          ProductoDAO dao = new ProductoDAO();
       for(Articulo a: articulos){
             Producto pro = (Producto) dao.lisprocar(a.getIdpro());
             total += a.getCanpro() * pro.getPreven();  
         }  
       PrintWriter pw = response.getWriter();
-      pw.print((total*100)/100.0);
+      pw.print((total*100.0)/100.0);
+        }else 
+            if(action.equalsIgnoreCase("cambiar")){
+            int can = Integer.parseInt(request.getParameter("can"));
+         ProductoDAO dao = new ProductoDAO();
+      for(Articulo a: articulos){
+            Producto pro = (Producto) dao.lisprocar(a.getIdpro());
+           if(a.getIdpro() == idpro){
+               a.setCanpro(can);
+            }  
+             total += a.getCanpro() * pro.getPreven(); 
+        }
+      PrintWriter pw = response.getWriter();
+      pw.print((total*100.0)/100.0);
+        }
     }
 
     /**
